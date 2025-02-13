@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		846E68CC27A9B81800197218 /* PBC_CocktailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68CB27A9B81800197218 /* PBC_CocktailTests.swift */; };
+		846E68D627A9B81800197218 /* PBC_CocktailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68D527A9B81800197218 /* PBC_CocktailUITests.swift */; };
+		846E68D827A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68D727A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		846E68C827A9B81800197218 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846E68AF27A9B81100197218 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 846E68B627A9B81100197218;
+			remoteInfo = "PBC Cocktail";
+		};
+		846E68D227A9B81800197218 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 846E68AF27A9B81100197218 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 846E68B627A9B81100197218;
+			remoteInfo = "PBC Cocktail";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		846E68B727A9B81100197218 /* PBC Cocktail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PBC Cocktail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		846E68C727A9B81800197218 /* PBC CocktailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PBC CocktailTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		846E68CB27A9B81800197218 /* PBC_CocktailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBC_CocktailTests.swift; sourceTree = "<group>"; };
+		846E68D127A9B81800197218 /* PBC CocktailUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PBC CocktailUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		846E68D527A9B81800197218 /* PBC_CocktailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBC_CocktailUITests.swift; sourceTree = "<group>"; };
+		846E68D727A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBC_CocktailUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		84B77D082D5B0F810044679F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				Models/CocktailModel.swift,
+				PBC_CocktailApp.swift,
+				"Preview Content/Preview Assets.xcassets",
+				ViewModels/CocktailViewModel.swift,
+				Views/CocktailView.swift,
+				Views/ContentView.swift,
+				Views/FavoritesView.swift,
+			);
+			target = 846E68B627A9B81100197218 /* PBC Cocktail */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		84B77CEC2D5B0F650044679F /* New Folder */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "New Folder"; sourceTree = "<group>"; };
+		84B77D022D5B0F810044679F /* PBC Cocktail */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (84B77D082D5B0F810044679F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "PBC Cocktail"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		846E68B427A9B81100197218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		846E68C427A9B81800197218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		846E68CE27A9B81800197218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		846E68AE27A9B81100197218 = {
+			isa = PBXGroup;
+			children = (
+				846E68CA27A9B81800197218 /* PBC CocktailTests */,
+				846E68D427A9B81800197218 /* PBC CocktailUITests */,
+				846E68B827A9B81100197218 /* Products */,
+				84B77D022D5B0F810044679F /* PBC Cocktail */,
+			);
+			sourceTree = "<group>";
+		};
+		846E68B827A9B81100197218 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				846E68B727A9B81100197218 /* PBC Cocktail.app */,
+				846E68C727A9B81800197218 /* PBC CocktailTests.xctest */,
+				846E68D127A9B81800197218 /* PBC CocktailUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		846E68CA27A9B81800197218 /* PBC CocktailTests */ = {
+			isa = PBXGroup;
+			children = (
+				846E68D527A9B81800197218 /* PBC_CocktailUITests.swift */,
+				846E68CB27A9B81800197218 /* PBC_CocktailTests.swift */,
+				846E68D727A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift */,
+			);
+			path = "PBC CocktailTests";
+			sourceTree = "<group>";
+		};
+		846E68D427A9B81800197218 /* PBC CocktailUITests */ = {
+			isa = PBXGroup;
+			children = (
+				84B77CEC2D5B0F650044679F /* New Folder */,
+			);
+			path = "PBC CocktailUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		846E68B627A9B81100197218 /* PBC Cocktail */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 846E68DB27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC Cocktail" */;
+			buildPhases = (
+				846E68B327A9B81100197218 /* Sources */,
+				846E68B427A9B81100197218 /* Frameworks */,
+				846E68B527A9B81100197218 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PBC Cocktail";
+			productName = "PBC Cocktail";
+			productReference = 846E68B727A9B81100197218 /* PBC Cocktail.app */;
+			productType = "com.apple.product-type.application";
+		};
+		846E68C627A9B81800197218 /* PBC CocktailTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 846E68DE27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC CocktailTests" */;
+			buildPhases = (
+				846E68C327A9B81800197218 /* Sources */,
+				846E68C427A9B81800197218 /* Frameworks */,
+				846E68C527A9B81800197218 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				846E68C927A9B81800197218 /* PBXTargetDependency */,
+			);
+			name = "PBC CocktailTests";
+			productName = "PBC CocktailTests";
+			productReference = 846E68C727A9B81800197218 /* PBC CocktailTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		846E68D027A9B81800197218 /* PBC CocktailUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 846E68E127A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC CocktailUITests" */;
+			buildPhases = (
+				846E68CD27A9B81800197218 /* Sources */,
+				846E68CE27A9B81800197218 /* Frameworks */,
+				846E68CF27A9B81800197218 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				846E68D327A9B81800197218 /* PBXTargetDependency */,
+			);
+			name = "PBC CocktailUITests";
+			productName = "PBC CocktailUITests";
+			productReference = 846E68D127A9B81800197218 /* PBC CocktailUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		846E68AF27A9B81100197218 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					846E68B627A9B81100197218 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					846E68C627A9B81800197218 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 846E68B627A9B81100197218;
+					};
+					846E68D027A9B81800197218 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 846E68B627A9B81100197218;
+					};
+				};
+			};
+			buildConfigurationList = 846E68B227A9B81100197218 /* Build configuration list for PBXProject "PBC Cocktail" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 846E68AE27A9B81100197218;
+			productRefGroup = 846E68B827A9B81100197218 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				846E68B627A9B81100197218 /* PBC Cocktail */,
+				846E68C627A9B81800197218 /* PBC CocktailTests */,
+				846E68D027A9B81800197218 /* PBC CocktailUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		846E68B527A9B81100197218 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		846E68C527A9B81800197218 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		846E68CF27A9B81800197218 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		846E68B327A9B81100197218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		846E68C327A9B81800197218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				846E68CC27A9B81800197218 /* PBC_CocktailTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		846E68CD27A9B81800197218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				846E68D827A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift in Sources */,
+				846E68D627A9B81800197218 /* PBC_CocktailUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		846E68C927A9B81800197218 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 846E68B627A9B81100197218 /* PBC Cocktail */;
+			targetProxy = 846E68C827A9B81800197218 /* PBXContainerItemProxy */;
+		};
+		846E68D327A9B81800197218 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 846E68B627A9B81100197218 /* PBC Cocktail */;
+			targetProxy = 846E68D227A9B81800197218 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		846E68D927A9B81800197218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		846E68DA27A9B81800197218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		846E68DC27A9B81800197218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PBC Cocktail/Preview Content\"";
+				DEVELOPMENT_TEAM = DY473XC7PR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mehrlich.PBC-Cocktail";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		846E68DD27A9B81800197218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PBC Cocktail/Preview Content\"";
+				DEVELOPMENT_TEAM = DY473XC7PR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mehrlich.PBC-Cocktail";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		846E68DF27A9B81800197218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DY473XC7PR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mehrlich.PBC-CocktailTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PBC Cocktail.app/PBC Cocktail";
+			};
+			name = Debug;
+		};
+		846E68E027A9B81800197218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DY473XC7PR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mehrlich.PBC-CocktailTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PBC Cocktail.app/PBC Cocktail";
+			};
+			name = Release;
+		};
+		846E68E227A9B81800197218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DY473XC7PR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mehrlich.PBC-CocktailUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PBC Cocktail";
+			};
+			name = Debug;
+		};
+		846E68E327A9B81800197218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DY473XC7PR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mehrlich.PBC-CocktailUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PBC Cocktail";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		846E68B227A9B81100197218 /* Build configuration list for PBXProject "PBC Cocktail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				846E68D927A9B81800197218 /* Debug */,
+				846E68DA27A9B81800197218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		846E68DB27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC Cocktail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				846E68DC27A9B81800197218 /* Debug */,
+				846E68DD27A9B81800197218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		846E68DE27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC CocktailTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				846E68DF27A9B81800197218 /* Debug */,
+				846E68E027A9B81800197218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		846E68E127A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC CocktailUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				846E68E227A9B81800197218 /* Debug */,
+				846E68E327A9B81800197218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 846E68AF27A9B81100197218 /* Project object */;
+}

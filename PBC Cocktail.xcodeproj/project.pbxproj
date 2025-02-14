@@ -44,6 +44,7 @@
 		84B77D082D5B0F810044679F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				.gitignore,
 				Assets.xcassets,
 				Auth/AuthenticationManager.swift,
 				Auth/FirebaseConfig.swift,

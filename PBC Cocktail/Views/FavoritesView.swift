@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FavoritesView: View {
     @Environment(\.colorScheme) var colorScheme
+    @StateObject private var firebaseManager = FirebaseManager()
     @State private var searchText = ""
     
     // Custom colors for monochrome theme
@@ -17,45 +18,12 @@ struct FavoritesView: View {
     private let accentGray = Color(white: 0.9)
     private let textGray = Color(white: 0.7)
     
-    // Sample data - replace with your actual data from Firebase
-    private let sampleCocktails = [
-        Cocktail(
-            strDrink: "Martini",
-            strInstructions: "Stir with ice, strain into chilled glass, garnish with olive",
-            strDrinkThumb: nil,
-            strIngredient1: "Gin",
-            strIngredient2: "Dry Vermouth",
-            strIngredient3: "Olive",
-            strIngredient4: nil,
-            strIngredient5: nil,
-            strMeasure1: "1 2/3 oz",
-            strMeasure2: "1/3 oz",
-            strMeasure3: "1",
-            strMeasure4: nil,
-            strMeasure5: nil
-        ),
-        Cocktail(
-            strDrink: "Negroni Torboto",
-            strInstructions: nil,
-            strDrinkThumb: nil,
-            strIngredient1: "Scotch",
-            strIngredient2: "Cynar",
-            strIngredient3: "Aperol",
-            strIngredient4: nil,
-            strIngredient5: nil,
-            strMeasure1: "1/3 oz",
-            strMeasure2: "1/3 oz",
-            strMeasure3: "1/3 oz",
-            strMeasure4: nil,
-            strMeasure5: nil
-        )
-    ]
-    
-    var filteredCocktails: [Cocktail] {
+    var filteredCocktails: [SavedCocktail] {
         if searchText.isEmpty {
-            return sampleCocktails
+            return firebaseManager.savedCocktails
         } else {
-            return sampleCocktails.filter { cocktail in
+            return firebaseManager.savedCocktails.filter { savedCocktail in
+                let cocktail = savedCocktail.cocktail
                 let ingredients = [
                     cocktail.strIngredient1,
                     cocktail.strIngredient2,
@@ -94,18 +62,20 @@ struct FavoritesView: View {
                 // Favorites List
                 if filteredCocktails.isEmpty {
                     VStack(spacing: 10) {
-                        Text("No matches found")
+                        Text(searchText.isEmpty ? "No saved cocktails" : "No matches found")
                             .foregroundColor(textGray)
                             .padding(.top, 30)
-                        Text("Try searching for a different ingredient or add new ones to your favorites")
+                        Text(searchText.isEmpty ?
+                            "Save some cocktails to get started" :
+                            "Try searching for a different ingredient")
                             .font(.caption)
                             .foregroundColor(textGray.opacity(0.7))
                     }
                 } else {
                     ScrollView {
                         LazyVStack(spacing: 15) {
-                            ForEach(filteredCocktails, id: \.strDrink) { cocktail in
-                                FavoriteCardView(cocktail: cocktail)
+                            ForEach(filteredCocktails) { savedCocktail in
+                                FavoriteCardView(savedCocktail: savedCocktail)
                             }
                         }
                         .padding(.horizontal)
@@ -124,57 +94,40 @@ struct FavoritesView: View {
                 }
             }
         }
+        .onAppear {
+            firebaseManager.startListeningForChanges()
+        }
     }
 }
 
 struct FavoriteCardView: View {
+    @StateObject private var firebaseManager = FirebaseManager()
     private let cardGray = Color(white: 0.15)
     private let accentGray = Color(white: 0.9)
     private let textGray = Color(white: 0.7)
     
-    let cocktail: Cocktail
-    
-    var formattedIngredients: String {
-        var ingredients: [String] = []
-        
-        // Combine measurements and ingredients
-        if let m1 = cocktail.strMeasure1, let i1 = cocktail.strIngredient1 {
-            ingredients.append("\(m1.trimmingCharacters(in: .whitespaces)) \(i1)")
-        }
-        if let m2 = cocktail.strMeasure2, let i2 = cocktail.strIngredient2 {
-            ingredients.append("\(m2.trimmingCharacters(in: .whitespaces)) \(i2)")
-        }
-        if let m3 = cocktail.strMeasure3, let i3 = cocktail.strIngredient3 {
-            ingredients.append("\(m3.trimmingCharacters(in: .whitespaces)) \(i3)")
-        }
-        if let m4 = cocktail.strMeasure4, let i4 = cocktail.strIngredient4 {
-            ingredients.append("\(m4.trimmingCharacters(in: .whitespaces)) \(i4)")
-        }
-        if let m5 = cocktail.strMeasure5, let i5 = cocktail.strIngredient5 {
-            ingredients.append("\(m5.trimmingCharacters(in: .whitespaces)) \(i5)")
-        }
-        
-        return ingredients.joined(separator: ", ")
-    }
+    let savedCocktail: SavedCocktail
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text(cocktail.strDrink)
+                Text(savedCocktail.cocktail.strDrink)
                     .font(.system(size: 22, weight: .medium))
                     .foregroundColor(.white)
                 
                 Spacer()
                 
                 Button(action: {
-                    // Remove from favorites action
+                    Task {
+                        try? await firebaseManager.toggleFavorite(for: savedCocktail.id)
+                    }
                 }) {
-                    Image(systemName: "heart.fill")
+                    Image(systemName: savedCocktail.isFavorite ? "heart.fill" : "heart")
                         .foregroundColor(accentGray)
                 }
             }
             
-            Text(formattedIngredients)
+            Text(savedCocktail.formattedIngredients.joined(separator: ", "))
                 .font(.system(size: 16, weight: .light))
                 .foregroundColor(textGray)
         }
@@ -187,6 +140,15 @@ struct FavoriteCardView: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.white.opacity(0.1), lineWidth: 1)
         )
+        .swipeActions(edge: .trailing) {
+            Button(role: .destructive) {
+                Task {
+                    try? await firebaseManager.deleteCocktail(savedCocktail.id)
+                }
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+        }
     }
 }
 

@@ -11,111 +11,123 @@ struct CocktailView: View {
     @StateObject private var viewModel = CocktailViewModel()
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Fixed header area
-            VStack(spacing: 16) {
-                Text(viewModel.currentDrink)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                    .frame(height: 60) // Fixed height for title
-                    .frame(maxWidth: .infinity)
-                
-                if !viewModel.currentDrink.isEmpty {
-                    Text("Ingredients:")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
-                }
-            }
-            .padding(.top)
-            .background(Color(UIColor.systemBackground))
-            // Add a shadow to create visual separation
-            .shadow(color: Color.black.opacity(0.1), radius: 2, y: 2)
-            // Ensure header stays on top
-            .zIndex(1)
+        ZStack {
+            // Background image with overlay
+            Image("pelican")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .overlay(
+                    LinearGradient(
+                        gradient: Gradient(colors: [.black.opacity(0.4), .black.opacity(0.2)]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .ignoresSafeArea()
             
-            // Scrollable content area
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    // Ingredients list
-                    if !viewModel.currentIngredients.isEmpty {
-                        Text(viewModel.currentIngredients)
-                            .font(.title3)
-                            .multilineTextAlignment(.leading)
-                            .padding(.horizontal, 40) // Match the drink name padding
+            GeometryReader { geometry in
+                VStack(spacing: 0) {
+                    // Header - now positioned based on safe area
+                    VStack(spacing: 8) {
+                        Text("RANDOM COCKTAIL")
+                            .font(.system(size: 28, weight: .light))
+                            .tracking(8)
+                            .foregroundColor(.white)
+                        
+                        Text("FIRST EDITION")
+                            .font(.system(size: 14, weight: .light))
+                            .tracking(4)
+                            .foregroundColor(.white.opacity(0.9))
+                    }
+                    .padding(.top, geometry.safeAreaInsets.top - 8)
+                    
+                    // Cocktail display area
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .padding(.top, 40)
+                    } else {
+                        VStack(spacing: 20) {
+                            Text(viewModel.currentDrink)
+                                .font(.system(size: 24, weight: .light))
+                                .tracking(2)
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding(.top, 40)
+                            
+                            if !viewModel.currentDrink.isEmpty {
+                                Rectangle()
+                                    .frame(width: 40, height: 1)
+                                    .foregroundColor(.white.opacity(0.5))
+                            }
+                            
+                            VStack(alignment: .center, spacing: 8) {
+                                ForEach(viewModel.currentIngredients.components(separatedBy: ", "), id: \.self) { ingredient in
+                                    Text(ingredient)
+                                        .font(.system(size: 16, weight: .light))
+                                        .tracking(1)
+                                        .foregroundColor(.white.opacity(0.9))
+                                }
+                            }
+                            .padding(.horizontal, 40)
+                        }
                     }
                     
-                    // Error message if present
                     if let error = viewModel.errorMessage {
                         Text(error)
-                            .foregroundColor(.red)
-                            .padding(.horizontal)
+                            .font(.system(size: 14, weight: .light))
+                            .foregroundColor(.red.opacity(0.9))
+                            .padding()
                     }
+                    
+                    Spacer()
+                    
+                    // Spirit buttons
+                    VStack(spacing: 16) {
+                        ForEach(["GIN", "VODKA", "RUM", "TEQUILA", "WHISKY"], id: \.self) { spirit in
+                            Button(action: {
+                                viewModel.fetchCocktail(forSpirit: spirit.lowercased())
+                            }) {
+                                Text(spirit)
+                                    .font(.system(size: 14, weight: .light))
+                                    .tracking(4)
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 10)
+                                    .background(Color.black.opacity(0.2))
+                                    .cornerRadius(2)
+                            }
+                        }
+                        
+                        Button(action: {
+                            viewModel.reset()
+                        }) {
+                            Text("RESTART")
+                                .font(.system(size: 14, weight: .light))
+                                .tracking(4)
+                                .foregroundColor(.white.opacity(0.8))
+                                .padding(.vertical, 10)
+                        }
+                    }
+                    .padding(.horizontal, 40)
+                    .padding(.bottom, 40)
                 }
-                .padding(.vertical)
             }
-            
-            // Button group at bottom
-            VStack(spacing: 12) {
-                HStack(spacing: 20) {
-                    ForEach(["Gin", "Vodka"], id: \.self) { spirit in
-                        spiritButton(spirit)
-                    }
-                }
-                
-                HStack(spacing: 20) {
-                    ForEach(["Rum", "Tequila", "Whisky"], id: \.self) { spirit in
-                        spiritButton(spirit)
-                    }
-                }
-                
-                Button(action: {
-                    viewModel.reset()
-                }) {
-                    Text("Reset")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                }
-                .padding(.horizontal)
-                .disabled(viewModel.isLoading)
-            }
-            .padding(.vertical)
-            .background(Color(UIColor.systemBackground))
-            .shadow(color: Color.black.opacity(0.1), radius: 2, y: -2)
         }
-        .overlay(
-            Group {
-                if viewModel.isLoading {
-                    ProgressView()
-                        .scaleEffect(1.5)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.black.opacity(0.1))
-                }
-            }
-        )
-    }
-    
-    private func spiritButton(_ spirit: String) -> some View {
-        Button(action: {
-            viewModel.fetchCocktail(forSpirit: spirit)
-        }) {
-            Text(spirit)
-                .fontWeight(.semibold)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.blue)
-                .cornerRadius(10)
-        }
-        .disabled(viewModel.isLoading)
     }
 }
 
 #Preview {
-    CocktailView()
+    NavigationView {
+        CocktailView()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {}) {
+                        Image(systemName: "bookmark.fill")
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+    }
 }

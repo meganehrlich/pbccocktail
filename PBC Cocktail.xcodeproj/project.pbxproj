@@ -10,6 +10,8 @@
 		846E68CC27A9B81800197218 /* PBC_CocktailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68CB27A9B81800197218 /* PBC_CocktailTests.swift */; };
 		846E68D627A9B81800197218 /* PBC_CocktailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68D527A9B81800197218 /* PBC_CocktailUITests.swift */; };
 		846E68D827A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68D727A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift */; };
+		84B77D422D5E8FBD0044679F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84B77D412D5E8FBD0044679F /* FirebaseAuth */; };
+		84B77D442D5E8FBD0044679F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84B77D432D5E8FBD0044679F /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +45,20 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
+				Auth/AuthenticationManager.swift,
+				Auth/FirebaseConfig.swift,
+				Auth/FirebaseManager.swift,
+				"GoogleService-Info.plist",
 				Models/CocktailModel.swift,
+				Models/UserModel.swift,
 				PBC_CocktailApp.swift,
 				"Preview Content/Preview Assets.xcassets",
 				ViewModels/CocktailViewModel.swift,
 				Views/CocktailView.swift,
 				Views/ContentView.swift,
 				Views/FavoritesView.swift,
+				Views/SavedCocktailsView.swift,
+				Views/SignInView.swift,
 			);
 			target = 846E68B627A9B81100197218 /* PBC Cocktail */;
 		};
@@ -65,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B77D422D5E8FBD0044679F /* FirebaseAuth in Frameworks */,
+				84B77D442D5E8FBD0044679F /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +222,9 @@
 				Base,
 			);
 			mainGroup = 846E68AE27A9B81100197218;
+			packageReferences = (
+				84B77D402D5E8FBD0044679F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 846E68B827A9B81100197218 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -408,6 +422,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "PBC Cocktail/PBC Cocktail.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PBC Cocktail/Preview Content\"";
@@ -425,7 +440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mehrlich.PBC-Cocktail";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meganehrlich.PBC-Cocktail";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -438,6 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "PBC Cocktail/PBC Cocktail.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PBC Cocktail/Preview Content\"";
@@ -455,7 +471,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mehrlich.PBC-Cocktail";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meganehrlich.PBC-Cocktail";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -579,6 +595,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84B77D402D5E8FBD0044679F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84B77D412D5E8FBD0044679F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B77D402D5E8FBD0044679F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		84B77D432D5E8FBD0044679F /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B77D402D5E8FBD0044679F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 846E68AF27A9B81100197218 /* Project object */;
 }

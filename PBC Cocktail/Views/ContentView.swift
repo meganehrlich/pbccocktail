@@ -6,15 +6,19 @@
 //
 
 import SwiftUI
+
 struct ContentView: View {
     @StateObject private var viewModel = CocktailViewModel()
-    @State private var showingFavorites = false
+    @StateObject private var firebaseManager = FirebaseManager()
+    @StateObject private var authManager = AuthenticationManager()
+    @State private var showingSavedCocktails = false
+    @State private var showingSignInSheet = false
     
     var body: some View {
         if #available(iOS 16.0, *) {
             NavigationStack {
                 ZStack {
-                    // Background image with lighter overlay
+                    // Your existing ZStack content remains the same
                     Image("pelican")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -28,9 +32,10 @@ struct ContentView: View {
                         .ignoresSafeArea()
                     
                     VStack {
-                        // Keep header size the same
-                        VStack(spacing: 4) {
-                            Text("RANDOM COCKTAIL")
+                        // Your existing VStack content remains the same
+                        // Header
+                        VStack(spacing: 8) {
+                            Text(" RANDOM COCKTAIL")
                                 .font(.system(size: 28, weight: .light))
                                 .tracking(8)
                                 .foregroundColor(.white)
@@ -40,17 +45,16 @@ struct ContentView: View {
                                 .tracking(4)
                                 .foregroundColor(.white.opacity(0.9))
                         }
-                        .padding(.top, 60)
+                        .padding(.top, 30)
                         
                         Spacer()
                         
-                        // Cocktail display area with smaller fonts
+                        // Cocktail display area
                         if viewModel.isLoading {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         } else {
                             VStack(spacing: 20) {
-                                // Reduced cocktail name size
                                 Text(viewModel.currentDrink)
                                     .font(.system(size: 24, weight: .light))
                                     .tracking(2)
@@ -63,7 +67,6 @@ struct ContentView: View {
                                         .foregroundColor(.white.opacity(0.5))
                                 }
                                 
-                                // Smaller ingredient text
                                 VStack(alignment: .center, spacing: 8) {
                                     ForEach(viewModel.currentIngredients.components(separatedBy: ", "), id: \.self) { ingredient in
                                         Text(ingredient)
@@ -85,7 +88,7 @@ struct ContentView: View {
                         
                         Spacer()
                         
-                        // Smaller spirit buttons
+                        // Spirit buttons
                         VStack(spacing: 16) {
                             ForEach(["Gin", "Vodka", "Rum", "Tequila", "Whisky"], id: \.self) { spirit in
                                 Button(action: {
@@ -116,20 +119,84 @@ struct ContentView: View {
                         .padding(.bottom, 40)
                     }
                 }
+                
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        HStack {
+                            Button(action: {
+                                if authManager.authState == .authenticated {
+                                    showingSavedCocktails = true
+                                } else {
+                                    showingSignInSheet = true
+                                }
+                            }) {
+                                Image(systemName: "bookmark.fill")
+                                    .foregroundColor(.white)
+                            }
+                            
+                            if !viewModel.currentDrink.isEmpty {
+                                Button(action: {
+                                    if authManager.authState == .authenticated {
+                                        saveCocktail()
+                                    } else {
+                                        showingSignInSheet = true
+                                    }
+                                }) {
+                                    Image(systemName: "plus.circle.fill")
+                                        .foregroundColor(.white)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .sheet(isPresented: $showingSavedCocktails) {
+                FavoritesView()
+            }
+            .sheet(isPresented: $showingSignInSheet) {
+                SignInView()
+                    .environmentObject(authManager)
+                    .onChange(of: authManager.authState) { newState in
+                        if newState == .authenticated {
+                            showingSignInSheet = false
+                            // If user was trying to save a cocktail, save it now
+                            if !viewModel.currentDrink.isEmpty {
+                                saveCocktail()
+                            }
+                            // Show the favorites view after successful sign-in
+                            showingSavedCocktails = true
+                        }
+                    }
+            }
+        }
+    }
+    
+    private func saveCocktail() {
+        guard !viewModel.currentDrink.isEmpty else { return }
+        
+        let cocktail = Cocktail(
+            strDrink: viewModel.currentDrink,
+            strInstructions: nil,
+            strDrinkThumb: nil,
+            strIngredient1: viewModel.currentIngredients.components(separatedBy: ", ").first,
+            strIngredient2: viewModel.currentIngredients.components(separatedBy: ", ").dropFirst().first,
+            strIngredient3: viewModel.currentIngredients.components(separatedBy: ", ").dropFirst(2).first,
+            strIngredient4: viewModel.currentIngredients.components(separatedBy: ", ").dropFirst(3).first,
+            strIngredient5: viewModel.currentIngredients.components(separatedBy: ", ").dropFirst(4).first,
+            strMeasure1: nil,
+            strMeasure2: nil,
+            strMeasure3: nil,
+            strMeasure4: nil,
+            strMeasure5: nil
+        )
+        
+        Task {
+            do {
+                try await firebaseManager.saveCocktail(cocktail)
+                showingSavedCocktails = true
+            } catch {
+                print("Error saving cocktail: \(error)")
             }
         }
     }
 }
-//                .toolbar {
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        Button(action: {
-//                            showingFavorites = true
-//                        }) {
-//                            Image(systemName: "heart.fill")
-//                                .foregroundColor(.white)
-//                        }
-//                    }
-//                }
-//                .navigationDestination(isPresented: $showingFavorites) {
-//                    FavoritesView()
-//                }

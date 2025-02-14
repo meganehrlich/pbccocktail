@@ -4,9 +4,9 @@
 //
 //  Created by Megan Amanda Ehrlich on 2/13/25.
 //
-// AuthenticationManager.swift
 
 import SwiftUI
+
 import AuthenticationServices
 import FirebaseAuth
 import FirebaseFirestore
@@ -20,7 +20,67 @@ class AuthenticationManager: NSObject, ObservableObject {
     private let db = Firestore.firestore()
     private var currentNonce: String?
     
-    // MARK: - Sign in with Apple
+    override init() {
+        super.init()
+        checkCurrentUser()
+    }
+    
+    // MARK: - User Authentication Check
+    private func checkCurrentUser() {
+        if let firebaseUser = Auth.auth().currentUser {
+            self.authState = .authenticating
+            
+            // Fetch user document
+            db.collection("users").document(firebaseUser.uid).getDocument { [weak self] (document, error) in
+                guard let self = self else { return }
+                
+                if let error = error {
+                    print("Error fetching user document: \(error)")
+                    self.authState = .unauthenticated
+                    return
+                }
+                
+                // Fetch saved cocktails
+                self.fetchSavedCocktails(for: firebaseUser.uid) { savedCocktails in
+                    // Create user object with fetched saved cocktails
+                    let user = User(
+                        id: firebaseUser.uid,
+                        email: firebaseUser.email,
+                        appleIdentifier: document?.data()?["appleIdentifier"] as? String,
+                        savedCocktails: savedCocktails
+                    )
+                    
+                    DispatchQueue.main.async {
+                        self.currentUser = user
+                        self.authState = .authenticated
+                    }
+                }
+            }
+        } else {
+            self.authState = .unauthenticated
+        }
+    }
+    
+    // MARK: - Saved Cocktails Fetching
+    private func fetchSavedCocktails(for userId: String, completion: @escaping ([SavedCocktail]) -> Void) {
+        db.collection("users").document(userId)
+          .collection("savedCocktails")
+          .getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching saved cocktails: \(error)")
+                completion([])
+                return
+            }
+            
+            let savedCocktails = querySnapshot?.documents.compactMap { document -> SavedCocktail? in
+                try? document.data(as: SavedCocktail.self)
+            } ?? []
+            
+            completion(savedCocktails)
+        }
+    }
+    
+    // MARK: - Sign In with Apple
     func handleSignInWithApple() {
         let nonce = randomNonceString()
         currentNonce = nonce
@@ -36,7 +96,7 @@ class AuthenticationManager: NSObject, ObservableObject {
         authorizationController.performRequests()
     }
     
-    // MARK: - Nonce Generation
+    // MARK: - Nonce Generation Helpers
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         var randomBytes = [UInt8](repeating: 0, count: length)
@@ -106,37 +166,51 @@ extension AuthenticationManager: ASAuthorizationControllerDelegate {
             return
         }
         
-        // Create Firebase credential with nonce
         let credential = OAuthProvider.credential(
             withProviderID: "apple.com",
             idToken: idTokenString,
-            rawNonce: nonce // Now properly passing the nonce
+            rawNonce: nonce
         )
         
-        // Sign in to Firebase
         self.authState = .authenticating
         
         Auth.auth().signIn(with: credential) { [weak self] (result, error) in
+            guard let self = self else { return }
+            
             if let error = error {
-                self?.error = .signInError
-                self?.authState = .unauthenticated
+                self.error = .signInError
+                self.authState = .unauthenticated
                 print("Firebase auth error: \(error)")
                 return
             }
             
             guard let user = result?.user else {
-                self?.error = .signInError
-                self?.authState = .unauthenticated
+                self.error = .signInError
+                self.authState = .unauthenticated
                 return
             }
             
             // Create or update user record
-            self?.createOrUpdateUserRecord(
+            self.createOrUpdateUserRecord(
                 withAppleID: appleIDCredential.user,
                 email: appleIDCredential.email
             )
             
-            self?.authState = .authenticated
+            // Fetch saved cocktails
+            self.fetchSavedCocktails(for: user.uid) { savedCocktails in
+                // Create user with fetched saved cocktails
+                let currentUser = User(
+                    id: user.uid,
+                    email: user.email,
+                    appleIdentifier: appleIDCredential.user,
+                    savedCocktails: savedCocktails
+                )
+                
+                DispatchQueue.main.async {
+                    self.currentUser = currentUser
+                    self.authState = .authenticated
+                }
+            }
         }
     }
     

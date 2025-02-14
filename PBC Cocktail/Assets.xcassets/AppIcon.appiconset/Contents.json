@@ -1,49 +1,49 @@
 {
   "images" : [
     {
-      "filename" : "parrot 180-7.jpg",
+      "filename" : "pbc-icon40pt.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "parrot 180-6.jpg",
+      "filename" : "pbc-icon60.jpeg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "parrot 180-5.jpg",
+      "filename" : "pbc-icon60 1.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "parrot 180-3.jpg",
+      "filename" : "pbc-icon87.jpeg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "parrot 180-4.jpg",
+      "filename" : "pbc-icon80.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "parrot 180-2.jpg",
+      "filename" : "pbc-icon120 1.jpeg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "parrot 180-1.jpg",
+      "filename" : "pbc-icon120.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "parrot 180.jpg",
+      "filename" : "pbc-icon180.jpeg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"

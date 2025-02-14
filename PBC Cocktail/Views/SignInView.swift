@@ -1,12 +1,4 @@
-//
-//  SignInView.swift
-//  PBC Cocktail
-//
-//  Created by Megan Amanda Ehrlich on 2/13/25.
-//
-
 import SwiftUI
-import _AuthenticationServices_SwiftUI
 import AuthenticationServices
 
 struct SignInView: View {
@@ -27,10 +19,11 @@ struct SignInView: View {
             
             SignInWithAppleButton(
                 .signIn,
-                onRequest: { _ in },
-                onCompletion: { _ in
+                onRequest: { request in
+                    // Necessary for handling Apple Sign In
                     authManager.handleSignInWithApple()
-                }
+                },
+                onCompletion: { _ in }
             )
             .frame(height: 44)
             .padding(.horizontal)

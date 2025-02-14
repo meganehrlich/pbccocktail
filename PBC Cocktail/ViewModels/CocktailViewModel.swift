@@ -228,38 +228,6 @@ class CocktailViewModel: ObservableObject {
 //        }.resume()
 //    }
     
-    private func fetchDrinkDetails(id: String, spirit: String) {
-        let urlString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(id)"
-        guard let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: encodedString) else {
-            isLoading = false
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.async {
-                if let data = data {
-                    do {
-                        let response = try JSONDecoder().decode(CocktailResponse.self, from: data)
-                        if let drink = response.drinks?.first {
-                            if self.verifySpiritInCocktail(drink, spirit: spirit) {
-                                self.shownCocktails.insert(drink.strDrink)
-                                self.updateUIWithCocktail(drink)
-                            } else {
-                                // If spirit verification fails, try the next cocktail
-                                self.fetchCocktail(forSpirit: spirit)
-                            }
-                        }
-                    } catch {
-                        self.errorMessage = "Failed to decode drink details"
-                    }
-                }
-                self.isLoading = false
-            }
-        }.resume()
-    }
     
     func reset() {
         currentDrink = ""
@@ -289,27 +257,88 @@ class CocktailViewModel: ObservableObject {
         }
     }
     
+    private func fetchDrinkDetails(id: String, spirit: String) {
+        let urlString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(id)"
+        guard let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: encodedString) else {
+            isLoading = false
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                if let data = data {
+                    do {
+                        let response = try JSONDecoder().decode(CocktailResponse.self, from: data)
+                        if let drink = response.drinks?.first {
+                            // Debug print to check the retrieved drink
+                            print("Retrieved Drink: \(drink)")
+                            
+                            // Print out all ingredients and measures
+                            let ingredients = [
+                                (drink.strIngredient1, drink.strMeasure1),
+                                (drink.strIngredient2, drink.strMeasure2),
+                                (drink.strIngredient3, drink.strMeasure3),
+                                (drink.strIngredient4, drink.strMeasure4),
+                                (drink.strIngredient5, drink.strMeasure5)
+                            ]
+                            
+                            print("Ingredients:")
+                            ingredients.forEach { ingredient, measure in
+                                if let ingredient = ingredient, let measure = measure {
+                                    print("- \(measure.trimmingCharacters(in: .whitespaces)) \(ingredient)")
+                                } else if let ingredient = ingredient {
+                                    print("- \(ingredient)")
+                                }
+                            }
+                            
+                            if self.verifySpiritInCocktail(drink, spirit: spirit) {
+                                self.shownCocktails.insert(drink.strDrink)
+                                self.updateUIWithCocktail(drink)
+                            } else {
+                                // If spirit verification fails, try the next cocktail
+                                self.fetchCocktail(forSpirit: spirit)
+                            }
+                        }
+                    } catch {
+                        print("Decoding error: \(error)")
+                        self.errorMessage = "Failed to decode drink details"
+                    }
+                }
+                self.isLoading = false
+            }
+        }.resume()
+    }
+
+    
     private func updateUIWithCocktail(_ cocktail: Cocktail) {
         currentDrink = cocktail.strDrink
         
-        // Build ingredients string
+        // More robust ingredients parsing
         var ingredients: [String] = []
-        if let m1 = cocktail.strMeasure1, let i1 = cocktail.strIngredient1 {
-            ingredients.append("\(m1.trimmingCharacters(in: .whitespaces)) \(i1)")
-        }
-        if let m2 = cocktail.strMeasure2, let i2 = cocktail.strIngredient2 {
-            ingredients.append("\(m2.trimmingCharacters(in: .whitespaces)) \(i2)")
-        }
-        if let m3 = cocktail.strMeasure3, let i3 = cocktail.strIngredient3 {
-            ingredients.append("\(m3.trimmingCharacters(in: .whitespaces)) \(i3)")
-        }
-        if let m4 = cocktail.strMeasure4, let i4 = cocktail.strIngredient4 {
-            ingredients.append("\(m4.trimmingCharacters(in: .whitespaces)) \(i4)")
-        }
-        if let m5 = cocktail.strMeasure5, let i5 = cocktail.strIngredient5 {
-            ingredients.append("\(m5.trimmingCharacters(in: .whitespaces)) \(i5)")
+        let ingredientPairs = [
+            (cocktail.strMeasure1, cocktail.strIngredient1),
+            (cocktail.strMeasure2, cocktail.strIngredient2),
+            (cocktail.strMeasure3, cocktail.strIngredient3),
+            (cocktail.strMeasure4, cocktail.strIngredient4),
+            (cocktail.strMeasure5, cocktail.strIngredient5)
+        ]
+        
+        for (measure, ingredient) in ingredientPairs {
+            guard let ingredient = ingredient, !ingredient.isEmpty else { continue }
+            
+            if let measure = measure, !measure.isEmpty {
+                ingredients.append("\(measure.trimmingCharacters(in: .whitespaces)) \(ingredient)")
+            } else {
+                ingredients.append(ingredient)
+            }
         }
         
         currentIngredients = ingredients.joined(separator: ", ")
+        
+        // Debug print
+        print("Final Ingredients: \(currentIngredients)")
     }
 }

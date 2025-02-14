@@ -76,3 +76,51 @@ enum UserError: Error {
         }
     }
 }
+
+extension SavedCocktail {
+    var formattedIngredients: [String] {
+        var ingredients: [String] = []
+        
+        // Attempt to create ingredients with measures
+        if let m1 = cocktail.strMeasure1, let i1 = cocktail.strIngredient1 {
+            ingredients.append("\(m1.trimmingCharacters(in: .whitespaces)) \(i1)")
+        } else if let i1 = cocktail.strIngredient1 {
+            ingredients.append(i1)
+        }
+        
+        if let m2 = cocktail.strMeasure2, let i2 = cocktail.strIngredient2 {
+            ingredients.append("\(m2.trimmingCharacters(in: .whitespaces)) \(i2)")
+        } else if let i2 = cocktail.strIngredient2 {
+            ingredients.append(i2)
+        }
+        
+        if let m3 = cocktail.strMeasure3, let i3 = cocktail.strIngredient3 {
+            ingredients.append("\(m3.trimmingCharacters(in: .whitespaces)) \(i3)")
+        } else if let i3 = cocktail.strIngredient3 {
+            ingredients.append(i3)
+        }
+        
+        if let m4 = cocktail.strMeasure4, let i4 = cocktail.strIngredient4 {
+            ingredients.append("\(m4.trimmingCharacters(in: .whitespaces)) \(i4)")
+        } else if let i4 = cocktail.strIngredient4 {
+            ingredients.append(i4)
+        }
+        
+        if let m5 = cocktail.strMeasure5, let i5 = cocktail.strIngredient5 {
+            ingredients.append("\(m5.trimmingCharacters(in: .whitespaces)) \(i5)")
+        } else if let i5 = cocktail.strIngredient5 {
+            ingredients.append(i5)
+        }
+        
+        return ingredients
+    }
+    
+    var mainSpirit: String? {
+        let spirits = ["gin", "vodka", "rum", "tequila", "whisky", "whiskey", "bourbon", "scotch"]
+        return formattedIngredients.first { ingredient in
+            spirits.contains { spirit in
+                ingredient.lowercased().contains(spirit)
+            }
+        }
+    }
+}

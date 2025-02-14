@@ -32,7 +32,6 @@ struct ContentView: View {
                         .ignoresSafeArea()
                     
                     VStack {
-                        // Your existing VStack content remains the same
                         // Header
                         VStack(spacing: 8) {
                             Text(" RANDOM COCKTAIL")
@@ -173,6 +172,25 @@ struct ContentView: View {
     
     private func saveCocktail() {
         guard !viewModel.currentDrink.isEmpty else { return }
+        
+        // Create a more thorough duplicate check
+        let normalizedCurrentDrink = viewModel.currentDrink.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let isDuplicate = firebaseManager.savedCocktails.contains { savedCocktail in
+            let normalizedSavedDrink = savedCocktail.cocktail.strDrink.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+            return normalizedCurrentDrink == normalizedSavedDrink
+        }
+        
+        // Add print statements for debugging
+        print("Attempting to save cocktail: \(normalizedCurrentDrink)")
+        print("Current saved cocktails: \(firebaseManager.savedCocktails.map { $0.cocktail.strDrink })")
+        print("Is duplicate: \(isDuplicate)")
+        
+        if isDuplicate {
+            print("Duplicate cocktail found - not saving")
+            showingSavedCocktails = true
+            return
+        }
         
         let cocktail = Cocktail(
             strDrink: viewModel.currentDrink,

@@ -58,7 +58,6 @@
 				Views/CocktailView.swift,
 				Views/ContentView.swift,
 				Views/FavoritesView.swift,
-				Views/SavedCocktailsView.swift,
 				Views/SignInView.swift,
 			);
 			target = 846E68B627A9B81100197218 /* PBC Cocktail */;

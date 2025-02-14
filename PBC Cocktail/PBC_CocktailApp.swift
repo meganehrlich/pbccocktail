@@ -19,9 +19,18 @@ struct PBC_CocktailApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(authManager)
-                .environmentObject(firebaseManager)
+            // Conditional view based on authentication state
+            switch authManager.authState {
+            case .authenticated:
+                ContentView()
+                    .environmentObject(authManager)
+                    .environmentObject(firebaseManager)
+            case .authenticating:
+                ProgressView("Authenticating...")
+            case .unauthenticated:
+                SignInView()
+                    .environmentObject(authManager)
+            }
         }
     }
 }

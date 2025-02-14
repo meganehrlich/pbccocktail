@@ -7,18 +7,124 @@
 
 import SwiftUI
 
+struct FavoriteCardView: View {
+    @StateObject private var firebaseManager = FirebaseManager()
+    @State private var isExpanded = false
+    
+    private let backgroundColor = Color(white: 0.15) // Dark gray background
+    private let textColor = Color.white.opacity(0.85) // Light text
+    private let subtextColor = Color.white.opacity(0.6) // Lighter subdued text
+    private let accentColor = Color.white // White accent color
+
+    
+    let savedCocktail: SavedCocktail
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            // Minimalist Card Design
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(savedCocktail.cocktail.strDrink)
+                        .font(.custom("HelveticaNeue-Thin", size: 22))
+                        .tracking(1.5)
+                        .textCase(.uppercase)
+                        .foregroundColor(textColor)
+                    
+                    if let spirit = savedCocktail.mainSpirit {
+                        Text(spirit.uppercased())
+                            .font(.custom("HelveticaNeue-Light", size: 12))
+                            .tracking(2)
+                            .foregroundColor(subtextColor)
+                    }
+                }
+                
+                Spacer()
+                
+                // Minimalist Favorite Icon
+                Button(action: {
+                    Task {
+                        do {
+                            try await firebaseManager.deleteCocktail(savedCocktail.id)
+                        } catch {
+                            print("Error deleting cocktail: \(error)")
+                        }
+                    }
+                }) {
+                    Image(systemName: "minus.circle.fill")
+                        .foregroundColor(accentColor)
+                        .font(.system(size: 24, weight: .light))
+                }
+            }
+            .padding()
+            
+            // Expandable Recipe Section with Elegant Typography
+            if isExpanded {
+                VStack(alignment: .leading, spacing: 15) {
+                    Divider()
+                        .background(accentColor)
+                    
+                    // Ingredients Section
+                    Text("Recipe")
+                        .font(.custom("HelveticaNeue-Light", size: 16))
+                        .textCase(.uppercase)
+                        .foregroundColor(textColor)
+                        .padding(.horizontal)
+                    
+                    ForEach(savedCocktail.formattedIngredients, id: \.self) { ingredient in
+                        Text("— \(ingredient)")
+                            .font(.custom("HelveticaNeue-Light", size: 14))
+                            .foregroundColor(subtextColor)
+                            .padding(.horizontal)
+                    }
+                    
+                    // Instructions Section
+                    if let instructions = savedCocktail.cocktail.strInstructions {
+                        Text("Preparation")
+                            .font(.custom("HelveticaNeue-Light", size: 16))
+                            .textCase(.uppercase)
+                            .foregroundColor(textColor)
+                            .padding([.horizontal, .top])
+                        
+                        Text(instructions)
+                            .font(.custom("HelveticaNeue-Light", size: 14))
+                            .foregroundColor(subtextColor)
+                            .padding(.horizontal)
+                    }
+                }
+                .transition(.opacity)
+                .padding(.bottom)
+            }
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(backgroundColor)
+                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.black.opacity(0.05), lineWidth: 1)
+        )
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                isExpanded.toggle()
+            }
+        }
+        .padding(.vertical, 8)
+    }
+}
+
 struct FavoritesView: View {
-    @Environment(\.colorScheme) var colorScheme
     @StateObject private var firebaseManager = FirebaseManager()
     @State private var searchText = ""
     
-    // Custom colors for monochrome theme
-    private let darkBackground = Color(red: 0.06, green: 0.06, blue: 0.06)
-    private let cardGray = Color(white: 0.15)
-    private let accentGray = Color(white: 0.9)
-    private let textGray = Color(white: 0.7)
-    
+    // Elegant, minimalist color palette
+    private let backgroundColor = Color(white: 0.1) // Very dark background
+    private let textColor = Color.white // White main text
+    private let subtextColor = Color.white.opacity(0.6) // Subdued white text
+
+
     var filteredCocktails: [SavedCocktail] {
+        // Same implementation as before
         if searchText.isEmpty {
             return firebaseManager.savedCocktails
         } else {
@@ -40,36 +146,35 @@ struct FavoritesView: View {
     
     var body: some View {
         ZStack {
-            darkBackground.ignoresSafeArea()
+            backgroundColor.ignoresSafeArea()
             
             VStack(spacing: 20) {
-                // Header
-                Text("Favorites")
-                    .font(.system(size: 32, weight: .light))
-                    .foregroundColor(.white)
-                    .padding(.top, 20)
+                // Elegant, Minimalist Header
+                VStack(spacing: 8) {
+                    Text("Cocktail Collection")
+                        .font(.custom("HelveticaNeue-Thin", size: 38))
+                        .tracking(3)
+                        .textCase(.uppercase)
+                        .foregroundColor(textColor)
+                }
+                .padding(.top, 20)
                 
-                // Subtitle
-                Text("Your Recipe Book")
-                    .font(.system(size: 16, weight: .light))
-                    .foregroundColor(textGray)
-                
-                // Search Bar
+                // Refined Search Bar
                 SearchBar(text: $searchText)
                     .padding(.horizontal)
-                    .foregroundColor(accentGray)
                 
                 // Favorites List
                 if filteredCocktails.isEmpty {
                     VStack(spacing: 10) {
-                        Text(searchText.isEmpty ? "No saved cocktails" : "No matches found")
-                            .foregroundColor(textGray)
+                        Text(searchText.isEmpty ? "No Cocktails" : "No Matches")
+                            .font(.custom("HelveticaNeue-Light", size: 18))
+                            .foregroundColor(subtextColor)
                             .padding(.top, 30)
                         Text(searchText.isEmpty ?
-                            "Save some cocktails to get started" :
-                            "Try searching for a different ingredient")
-                            .font(.caption)
-                            .foregroundColor(textGray.opacity(0.7))
+                            "Begin Your Collection" :
+                            "Refine Your Search")
+                            .font(.custom("HelveticaNeue-Light", size: 14))
+                            .foregroundColor(subtextColor.opacity(0.7))
                     }
                 } else {
                     ScrollView {
@@ -83,71 +188,9 @@ struct FavoritesView: View {
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    // Add sorting/filtering action here
-                }) {
-                    Image(systemName: "line.3.horizontal.decrease.circle")
-                        .foregroundColor(accentGray)
-                }
-            }
-        }
+        .navigationBarHidden(true)
         .onAppear {
             firebaseManager.startListeningForChanges()
-        }
-    }
-}
-
-struct FavoriteCardView: View {
-    @StateObject private var firebaseManager = FirebaseManager()
-    private let cardGray = Color(white: 0.15)
-    private let accentGray = Color(white: 0.9)
-    private let textGray = Color(white: 0.7)
-    
-    let savedCocktail: SavedCocktail
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text(savedCocktail.cocktail.strDrink)
-                    .font(.system(size: 22, weight: .medium))
-                    .foregroundColor(.white)
-                
-                Spacer()
-                
-                Button(action: {
-                    Task {
-                        try? await firebaseManager.toggleFavorite(for: savedCocktail.id)
-                    }
-                }) {
-                    Image(systemName: savedCocktail.isFavorite ? "heart.fill" : "heart")
-                        .foregroundColor(accentGray)
-                }
-            }
-            
-            Text(savedCocktail.formattedIngredients.joined(separator: ", "))
-                .font(.system(size: 16, weight: .light))
-                .foregroundColor(textGray)
-        }
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(cardGray)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.white.opacity(0.1), lineWidth: 1)
-        )
-        .swipeActions(edge: .trailing) {
-            Button(role: .destructive) {
-                Task {
-                    try? await firebaseManager.deleteCocktail(savedCocktail.id)
-                }
-            } label: {
-                Label("Delete", systemImage: "trash")
-            }
         }
     }
 }
@@ -155,10 +198,11 @@ struct FavoriteCardView: View {
 // Custom Search Bar
 struct SearchBar: View {
     @Binding var text: String
-    private let textGray = Color(white: 0.7)
-    private let placeholderGray = Color(white: 0.8) // Lighter gray for placeholder
-    private let cardGray = Color(white: 0.15)
+    private let textGray = Color(white: 0.7) // Light gray for text
+    private let placeholderGray = Color(white: 0.5) // Slightly darker placeholder
+    private let cardGray = Color(white: 0.2) // Lighter dark gray for search background
     
+
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")

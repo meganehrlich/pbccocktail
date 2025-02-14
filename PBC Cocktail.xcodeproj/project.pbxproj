@@ -49,7 +49,6 @@
 				Auth/AuthenticationManager.swift,
 				Auth/FirebaseConfig.swift,
 				Auth/FirebaseManager.swift,
-				"GoogleService-Info.plist",
 				Models/CocktailModel.swift,
 				Models/UserModel.swift,
 				PBC_CocktailApp.swift,

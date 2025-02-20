@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84464EF82D65618700D0A003 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84464EF72D65618700D0A003 /* FirebaseAuth */; };
+		84464EFA2D65618700D0A003 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84464EF92D65618700D0A003 /* FirebaseFirestore */; };
 		846E68CC27A9B81800197218 /* PBC_CocktailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68CB27A9B81800197218 /* PBC_CocktailTests.swift */; };
 		846E68D627A9B81800197218 /* PBC_CocktailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68D527A9B81800197218 /* PBC_CocktailUITests.swift */; };
 		846E68D827A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E68D727A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift */; };
+		84B677652D67B41A003D5E77 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84B677642D67B41A003D5E77 /* FirebaseAuth */; };
+		84B677672D67B41A003D5E77 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84B677662D67B41A003D5E77 /* FirebaseFirestore */; };
+		84B6776A2D67C489003D5E77 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 84B677692D67C489003D5E77 /* FirebaseAnalytics */; };
+		84B6776C2D67C489003D5E77 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 84B6776B2D67C489003D5E77 /* FirebaseAppDistribution-Beta */; };
+		84B6776E2D67C489003D5E77 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84B6776D2D67C489003D5E77 /* FirebaseAuth */; };
+		84B677702D67C489003D5E77 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84B6776F2D67C489003D5E77 /* FirebaseFirestore */; };
+		84B677722D67C489003D5E77 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 84B677712D67C489003D5E77 /* FirebaseStorage */; };
 		84B77D422D5E8FBD0044679F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84B77D412D5E8FBD0044679F /* FirebaseAuth */; };
 		84B77D442D5E8FBD0044679F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84B77D432D5E8FBD0044679F /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
@@ -49,6 +58,8 @@
 				Auth/AuthenticationManager.swift,
 				Auth/FirebaseConfig.swift,
 				Auth/FirebaseManager.swift,
+				"GoogleService-Info.plist",
+				Info.plist,
 				Models/CocktailModel.swift,
 				Models/UserModel.swift,
 				PBC_CocktailApp.swift,
@@ -73,8 +84,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B6776A2D67C489003D5E77 /* FirebaseAnalytics in Frameworks */,
 				84B77D422D5E8FBD0044679F /* FirebaseAuth in Frameworks */,
+				84B677652D67B41A003D5E77 /* FirebaseAuth in Frameworks */,
+				84B677702D67C489003D5E77 /* FirebaseFirestore in Frameworks */,
+				84464EFA2D65618700D0A003 /* FirebaseFirestore in Frameworks */,
+				84B6776E2D67C489003D5E77 /* FirebaseAuth in Frameworks */,
+				84464EF82D65618700D0A003 /* FirebaseAuth in Frameworks */,
 				84B77D442D5E8FBD0044679F /* FirebaseFirestore in Frameworks */,
+				84B677722D67C489003D5E77 /* FirebaseStorage in Frameworks */,
+				84B677672D67B41A003D5E77 /* FirebaseFirestore in Frameworks */,
+				84B6776C2D67C489003D5E77 /* FirebaseAppDistribution-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +122,7 @@
 				846E68D427A9B81800197218 /* PBC CocktailUITests */,
 				846E68B827A9B81100197218 /* Products */,
 				84B77D022D5B0F810044679F /* PBC Cocktail */,
+				84B77D562D5FC61B0044679F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +152,13 @@
 				84B77CEC2D5B0F650044679F /* New Folder */,
 			);
 			path = "PBC CocktailUITests";
+			sourceTree = "<group>";
+		};
+		84B77D562D5FC61B0044679F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +225,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					846E68B627A9B81100197218 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -222,7 +250,7 @@
 			);
 			mainGroup = 846E68AE27A9B81100197218;
 			packageReferences = (
-				84B77D402D5E8FBD0044679F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				84B677682D67C489003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 846E68B827A9B81100197218 /* Products */;
 			projectDirPath = "";
@@ -334,9 +362,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -351,11 +380,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cocktail Collection";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Cocktail Collection";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -398,6 +434,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -406,10 +443,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cocktail Collection";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "Cocktail Collection";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -423,11 +467,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "PBC Cocktail/PBC Cocktail.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"PBC Cocktail/Preview Content\"";
 				DEVELOPMENT_TEAM = DY473XC7PR;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "PBC Cocktail/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -438,9 +484,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meganehrlich.PBC-Cocktail";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -454,11 +502,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "PBC Cocktail/PBC Cocktail.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"PBC Cocktail/Preview Content\"";
 				DEVELOPMENT_TEAM = DY473XC7PR;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "PBC Cocktail/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -469,9 +518,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meganehrlich.PBC-Cocktail";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -481,7 +532,6 @@
 		846E68DF27A9B81800197218 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -501,7 +551,6 @@
 		846E68E027A9B81800197218 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -521,7 +570,6 @@
 		846E68E227A9B81800197218 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DY473XC7PR;
@@ -539,7 +587,6 @@
 		846E68E327A9B81800197218 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DY473XC7PR;
@@ -596,6 +643,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		84464EF62D65618700D0A003 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
+		84B677632D67B41A003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
+		84B677682D67C489003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
 		84B77D402D5E8FBD0044679F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -607,6 +678,51 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		84464EF72D65618700D0A003 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84464EF62D65618700D0A003 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		84464EF92D65618700D0A003 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84464EF62D65618700D0A003 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		84B677642D67B41A003D5E77 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B677632D67B41A003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		84B677662D67B41A003D5E77 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B677632D67B41A003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		84B677692D67C489003D5E77 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B677682D67C489003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		84B6776B2D67C489003D5E77 /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B677682D67C489003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
+		};
+		84B6776D2D67C489003D5E77 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B677682D67C489003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		84B6776F2D67C489003D5E77 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B677682D67C489003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		84B677712D67C489003D5E77 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B677682D67C489003D5E77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		84B77D412D5E8FBD0044679F /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 84B77D402D5E8FBD0044679F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

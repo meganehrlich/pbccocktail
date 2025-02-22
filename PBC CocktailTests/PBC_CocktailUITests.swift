@@ -1,6 +1,6 @@
 //
 //  PBC_CocktailUITests.swift
-//  PBC CocktailUITests
+//  PBCCocktailUITests
 //
 //  Created by Megan Amanda Ehrlich on 2/1/22.
 //

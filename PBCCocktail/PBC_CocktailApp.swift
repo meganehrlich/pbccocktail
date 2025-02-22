@@ -1,6 +1,6 @@
 //
 //  PBC_CocktailApp.swift
-//  PBC Cocktail
+//  PBCCocktail
 //
 //  Created by Megan Amanda Ehrlich on 2/1/22.
 //
@@ -19,18 +19,9 @@ struct PBC_CocktailApp: App {
     
     var body: some Scene {
         WindowGroup {
-            // Conditional view based on authentication state
-            switch authManager.authState {
-            case .authenticated:
-                ContentView()
-                    .environmentObject(authManager)
-                    .environmentObject(firebaseManager)
-            case .authenticating:
-                ProgressView("Authenticating...")
-            case .unauthenticated:
-                SignInView()
-                    .environmentObject(authManager)
-            }
+            ContentView()
+                .environmentObject(authManager)
+                .environmentObject(firebaseManager)
         }
     }
 }

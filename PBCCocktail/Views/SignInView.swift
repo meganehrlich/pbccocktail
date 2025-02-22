@@ -3,11 +3,23 @@ import AuthenticationServices
 
 struct SignInView: View {
     @EnvironmentObject var authManager: AuthenticationManager
-    @EnvironmentObject var firebaseManager: FirebaseManager
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 20) {
+            HStack {
+                Spacer()
+                Button(action: {
+                    dismiss()
+                }) {
+                    Text("Cancel")
+                        .foregroundColor(.gray)
+                }
+            }
+            .padding(.horizontal)
+            
+            Spacer()
+            
             Text("Sign In")
                 .font(.system(size: 24, weight: .medium))
             
@@ -20,7 +32,6 @@ struct SignInView: View {
             SignInWithAppleButton(
                 .signIn,
                 onRequest: { request in
-                    // Necessary for handling Apple Sign In
                     authManager.handleSignInWithApple()
                 },
                 onCompletion: { _ in }
@@ -35,12 +46,13 @@ struct SignInView: View {
                     .padding()
             }
             
-            Button("Cancel") {
-                dismiss()
-            }
-            .foregroundColor(.gray)
-            .padding(.top)
+            Spacer()
         }
         .padding()
+        .onChange(of: authManager.authState) { newState in
+            if newState == .authenticated {
+                dismiss()
+            }
+        }
     }
 }

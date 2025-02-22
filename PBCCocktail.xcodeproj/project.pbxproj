@@ -29,37 +29,35 @@
 			containerPortal = 846E68AF27A9B81100197218 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 846E68B627A9B81100197218;
-			remoteInfo = "PBC Cocktail";
+			remoteInfo = PBCCocktail;
 		};
 		846E68D227A9B81800197218 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 846E68AF27A9B81100197218 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 846E68B627A9B81100197218;
-			remoteInfo = "PBC Cocktail";
+			remoteInfo = PBCCocktail;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		846E68B727A9B81100197218 /* PBC Cocktail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PBC Cocktail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		846E68C727A9B81800197218 /* PBC CocktailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PBC CocktailTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		846E68B727A9B81100197218 /* PBCCocktail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PBCCocktail.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		846E68C727A9B81800197218 /* PBCCocktailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PBCCocktailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		846E68CB27A9B81800197218 /* PBC_CocktailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBC_CocktailTests.swift; sourceTree = "<group>"; };
-		846E68D127A9B81800197218 /* PBC CocktailUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PBC CocktailUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		846E68D127A9B81800197218 /* PBCCocktailUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PBCCocktailUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		846E68D527A9B81800197218 /* PBC_CocktailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBC_CocktailUITests.swift; sourceTree = "<group>"; };
 		846E68D727A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBC_CocktailUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		84B77D082D5B0F810044679F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		8444EE1A2D69069B00380CB1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				.gitignore,
 				Assets.xcassets,
 				Auth/AuthenticationManager.swift,
 				Auth/FirebaseConfig.swift,
 				Auth/FirebaseManager.swift,
 				"GoogleService-Info.plist",
-				Info.plist,
 				Models/CocktailModel.swift,
 				Models/UserModel.swift,
 				PBC_CocktailApp.swift,
@@ -70,13 +68,12 @@
 				Views/FavoritesView.swift,
 				Views/SignInView.swift,
 			);
-			target = 846E68B627A9B81100197218 /* PBC Cocktail */;
+			target = 846E68B627A9B81100197218 /* PBCCocktail */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		84B77CEC2D5B0F650044679F /* New Folder */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "New Folder"; sourceTree = "<group>"; };
-		84B77D022D5B0F810044679F /* PBC Cocktail */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (84B77D082D5B0F810044679F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "PBC Cocktail"; sourceTree = "<group>"; };
+		84B77D022D5B0F810044679F /* PBCCocktail */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8444EE1A2D69069B00380CB1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PBCCocktail; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +115,10 @@
 		846E68AE27A9B81100197218 = {
 			isa = PBXGroup;
 			children = (
-				846E68CA27A9B81800197218 /* PBC CocktailTests */,
-				846E68D427A9B81800197218 /* PBC CocktailUITests */,
+				846E68CA27A9B81800197218 /* PBCCocktailTests */,
+				846E68D427A9B81800197218 /* PBCCocktailUITests */,
 				846E68B827A9B81100197218 /* Products */,
-				84B77D022D5B0F810044679F /* PBC Cocktail */,
+				84B77D022D5B0F810044679F /* PBCCocktail */,
 				84B77D562D5FC61B0044679F /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -129,29 +126,28 @@
 		846E68B827A9B81100197218 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				846E68B727A9B81100197218 /* PBC Cocktail.app */,
-				846E68C727A9B81800197218 /* PBC CocktailTests.xctest */,
-				846E68D127A9B81800197218 /* PBC CocktailUITests.xctest */,
+				846E68B727A9B81100197218 /* PBCCocktail.app */,
+				846E68C727A9B81800197218 /* PBCCocktailTests.xctest */,
+				846E68D127A9B81800197218 /* PBCCocktailUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		846E68CA27A9B81800197218 /* PBC CocktailTests */ = {
+		846E68CA27A9B81800197218 /* PBCCocktailTests */ = {
 			isa = PBXGroup;
 			children = (
 				846E68D527A9B81800197218 /* PBC_CocktailUITests.swift */,
 				846E68CB27A9B81800197218 /* PBC_CocktailTests.swift */,
 				846E68D727A9B81800197218 /* PBC_CocktailUITestsLaunchTests.swift */,
 			);
-			path = "PBC CocktailTests";
+			path = PBCCocktailTests;
 			sourceTree = "<group>";
 		};
-		846E68D427A9B81800197218 /* PBC CocktailUITests */ = {
+		846E68D427A9B81800197218 /* PBCCocktailUITests */ = {
 			isa = PBXGroup;
 			children = (
-				84B77CEC2D5B0F650044679F /* New Folder */,
 			);
-			path = "PBC CocktailUITests";
+			path = PBCCocktailUITests;
 			sourceTree = "<group>";
 		};
 		84B77D562D5FC61B0044679F /* Frameworks */ = {
@@ -164,9 +160,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		846E68B627A9B81100197218 /* PBC Cocktail */ = {
+		846E68B627A9B81100197218 /* PBCCocktail */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 846E68DB27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC Cocktail" */;
+			buildConfigurationList = 846E68DB27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBCCocktail" */;
 			buildPhases = (
 				846E68B327A9B81100197218 /* Sources */,
 				846E68B427A9B81100197218 /* Frameworks */,
@@ -176,14 +172,14 @@
 			);
 			dependencies = (
 			);
-			name = "PBC Cocktail";
-			productName = "PBC Cocktail";
-			productReference = 846E68B727A9B81100197218 /* PBC Cocktail.app */;
+			name = PBCCocktail;
+			productName = PBCCocktail;
+			productReference = 846E68B727A9B81100197218 /* PBCCocktail.app */;
 			productType = "com.apple.product-type.application";
 		};
-		846E68C627A9B81800197218 /* PBC CocktailTests */ = {
+		846E68C627A9B81800197218 /* PBCCocktailTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 846E68DE27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC CocktailTests" */;
+			buildConfigurationList = 846E68DE27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBCCocktailTests" */;
 			buildPhases = (
 				846E68C327A9B81800197218 /* Sources */,
 				846E68C427A9B81800197218 /* Frameworks */,
@@ -194,14 +190,14 @@
 			dependencies = (
 				846E68C927A9B81800197218 /* PBXTargetDependency */,
 			);
-			name = "PBC CocktailTests";
-			productName = "PBC CocktailTests";
-			productReference = 846E68C727A9B81800197218 /* PBC CocktailTests.xctest */;
+			name = PBCCocktailTests;
+			productName = PBCCocktailTests;
+			productReference = 846E68C727A9B81800197218 /* PBCCocktailTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		846E68D027A9B81800197218 /* PBC CocktailUITests */ = {
+		846E68D027A9B81800197218 /* PBCCocktailUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 846E68E127A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC CocktailUITests" */;
+			buildConfigurationList = 846E68E127A9B81800197218 /* Build configuration list for PBXNativeTarget "PBCCocktailUITests" */;
 			buildPhases = (
 				846E68CD27A9B81800197218 /* Sources */,
 				846E68CE27A9B81800197218 /* Frameworks */,
@@ -212,9 +208,9 @@
 			dependencies = (
 				846E68D327A9B81800197218 /* PBXTargetDependency */,
 			);
-			name = "PBC CocktailUITests";
-			productName = "PBC CocktailUITests";
-			productReference = 846E68D127A9B81800197218 /* PBC CocktailUITests.xctest */;
+			name = PBCCocktailUITests;
+			productName = PBCCocktailUITests;
+			productReference = 846E68D127A9B81800197218 /* PBCCocktailUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -240,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 846E68B227A9B81100197218 /* Build configuration list for PBXProject "PBC Cocktail" */;
+			buildConfigurationList = 846E68B227A9B81100197218 /* Build configuration list for PBXProject "PBCCocktail" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -256,9 +252,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				846E68B627A9B81100197218 /* PBC Cocktail */,
-				846E68C627A9B81800197218 /* PBC CocktailTests */,
-				846E68D027A9B81800197218 /* PBC CocktailUITests */,
+				846E68B627A9B81100197218 /* PBCCocktail */,
+				846E68C627A9B81800197218 /* PBCCocktailTests */,
+				846E68D027A9B81800197218 /* PBCCocktailUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -317,12 +313,12 @@
 /* Begin PBXTargetDependency section */
 		846E68C927A9B81800197218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 846E68B627A9B81100197218 /* PBC Cocktail */;
+			target = 846E68B627A9B81100197218 /* PBCCocktail */;
 			targetProxy = 846E68C827A9B81800197218 /* PBXContainerItemProxy */;
 		};
 		846E68D327A9B81800197218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 846E68B627A9B81100197218 /* PBC Cocktail */;
+			target = 846E68B627A9B81100197218 /* PBCCocktail */;
 			targetProxy = 846E68D227A9B81800197218 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -380,15 +376,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Cocktail Collection";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PBCCocktail/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Random Collection";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "Cocktail Collection";
+				PRODUCT_NAME = Cocktails;
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
@@ -443,14 +439,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Cocktail Collection";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PBCCocktail/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Random Collection";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "Cocktail Collection";
+				PRODUCT_NAME = Cocktails;
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
@@ -465,15 +461,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "PBC Cocktail/PBC Cocktail.entitlements";
+				CODE_SIGN_ENTITLEMENTS = PBCCocktail/PBCCocktail.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"PBC Cocktail/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PBCCocktail/Preview Content\"";
 				DEVELOPMENT_TEAM = DY473XC7PR;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "PBC Cocktail/Info.plist";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PBCCocktail/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Cocktails;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -484,11 +481,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meganehrlich.PBC-Cocktail";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -500,14 +500,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "PBC Cocktail/PBC Cocktail.entitlements";
+				CODE_SIGN_ENTITLEMENTS = PBCCocktail/PBCCocktail.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"PBC Cocktail/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_ASSET_PATHS = "\"PBCCocktail/Preview Content\"";
 				DEVELOPMENT_TEAM = DY473XC7PR;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "PBC Cocktail/Info.plist";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PBCCocktail/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Cocktails;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -518,11 +519,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meganehrlich.PBC-Cocktail";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -544,7 +548,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PBC Cocktail.app/PBC Cocktail";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PBCCocktail.app/PBCCocktail";
 			};
 			name = Debug;
 		};
@@ -563,7 +567,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PBC Cocktail.app/PBC Cocktail";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PBCCocktail.app/PBCCocktail";
 			};
 			name = Release;
 		};
@@ -580,7 +584,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "PBC Cocktail";
+				TEST_TARGET_NAME = PBCCocktail;
 			};
 			name = Debug;
 		};
@@ -597,14 +601,14 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "PBC Cocktail";
+				TEST_TARGET_NAME = PBCCocktail;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		846E68B227A9B81100197218 /* Build configuration list for PBXProject "PBC Cocktail" */ = {
+		846E68B227A9B81100197218 /* Build configuration list for PBXProject "PBCCocktail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				846E68D927A9B81800197218 /* Debug */,
@@ -613,7 +617,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		846E68DB27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC Cocktail" */ = {
+		846E68DB27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBCCocktail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				846E68DC27A9B81800197218 /* Debug */,
@@ -622,7 +626,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		846E68DE27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC CocktailTests" */ = {
+		846E68DE27A9B81800197218 /* Build configuration list for PBXNativeTarget "PBCCocktailTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				846E68DF27A9B81800197218 /* Debug */,
@@ -631,7 +635,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		846E68E127A9B81800197218 /* Build configuration list for PBXNativeTarget "PBC CocktailUITests" */ = {
+		846E68E127A9B81800197218 /* Build configuration list for PBXNativeTarget "PBCCocktailUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				846E68E227A9B81800197218 /* Debug */,

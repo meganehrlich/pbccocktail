@@ -1,6 +1,6 @@
 //
 //  CocktailView.swift
-//  PBC Cocktail
+//  PBCCocktail
 //
 //  Created by Megan Amanda Ehrlich on 2/10/25.
 //
@@ -29,7 +29,7 @@ struct CocktailView: View {
                 VStack(spacing: 0) {
                     // Header - now positioned based on safe area
                     VStack(spacing: 8) {
-                        Text("RANDOM COCKTAIL")
+                        Text(" RANDOM COCKTAIL")
                             .font(.system(size: 28, weight: .light))
                             .tracking(8)
                             .foregroundColor(.white)

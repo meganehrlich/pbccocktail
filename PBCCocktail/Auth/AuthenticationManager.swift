@@ -1,6 +1,6 @@
 //
 //  AuthenticationManager.swift
-//  PBC Cocktail
+//  PBCCocktail
 //
 //  Created by Megan Amanda Ehrlich on 2/13/25.
 //

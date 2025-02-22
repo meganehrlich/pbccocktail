@@ -1,6 +1,6 @@
 //
 //  CocktailViewModel.swift
-//  PBC Cocktail
+//  PBCCocktail
 //
 //  Created by Megan Amanda Ehrlich on 2/10/25.
 //

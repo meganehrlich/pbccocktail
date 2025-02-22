@@ -1,11 +1,12 @@
 //
 //  FavoritesView.swift
-//  PBC Cocktail
+//  PBCCocktail
 //
 //  Created by Megan Amanda Ehrlich on 2/10/25.
 //
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
 
 struct FavoriteCardView: View {
     @StateObject private var firebaseManager = FirebaseManager()
@@ -114,14 +115,15 @@ struct FavoriteCardView: View {
 }
 
 struct FavoritesView: View {
+    @EnvironmentObject var authManager: AuthenticationManager
     @StateObject private var firebaseManager = FirebaseManager()
     @State private var searchText = ""
+    @Environment(\.dismiss) var dismiss
     
     // Elegant, minimalist color palette
     private let backgroundColor = Color(white: 0.1) // Very dark background
     private let textColor = Color.white // White main text
     private let subtextColor = Color.white.opacity(0.6) // Subdued white text
-
 
     var filteredCocktails: [SavedCocktail] {
         // Same implementation as before
@@ -145,52 +147,99 @@ struct FavoritesView: View {
     }
     
     var body: some View {
-        ZStack {
-            backgroundColor.ignoresSafeArea()
-            
-            VStack(spacing: 20) {
-                // Elegant, Minimalist Header
-                VStack(spacing: 8) {
-                    Text("Cocktail Collection")
-                        .font(.custom("HelveticaNeue-Thin", size: 38))
-                        .tracking(3)
-                        .textCase(.uppercase)
-                        .foregroundColor(textColor)
-                }
-                .padding(.top, 20)
-                
-                // Refined Search Bar
-                SearchBar(text: $searchText)
-                    .padding(.horizontal)
-                
-                // Favorites List
-                if filteredCocktails.isEmpty {
-                    VStack(spacing: 10) {
-                        Text(searchText.isEmpty ? "No Cocktails" : "No Matches")
-                            .font(.custom("HelveticaNeue-Light", size: 18))
-                            .foregroundColor(subtextColor)
-                            .padding(.top, 30)
-                        Text(searchText.isEmpty ?
-                            "Begin Your Collection" :
-                            "Refine Your Search")
-                            .font(.custom("HelveticaNeue-Light", size: 14))
-                            .foregroundColor(subtextColor.opacity(0.7))
-                    }
-                } else {
-                    ScrollView {
-                        LazyVStack(spacing: 15) {
-                            ForEach(filteredCocktails) { savedCocktail in
-                                FavoriteCardView(savedCocktail: savedCocktail)
+        Group {
+            if authManager.authState == .authenticated {
+                // Existing authenticated view content
+                ZStack {
+                    backgroundColor.ignoresSafeArea()
+                    
+                    VStack(spacing: 20) {
+                        // Header
+                        VStack(spacing: 8) {
+                            Text("Cocktail Collection")
+                                .font(.custom("HelveticaNeue-Thin", size: 38))
+                                .tracking(3)
+                                .textCase(.uppercase)
+                                .foregroundColor(textColor)
+                        }
+                        .padding(.top, 20)
+                        
+                        // Search Bar
+                        SearchBar(text: $searchText)
+                            .padding(.horizontal)
+                        
+                        // Favorites List
+                        if filteredCocktails.isEmpty {
+                            VStack(spacing: 10) {
+                                Text(searchText.isEmpty ? "No Cocktails" : "No Matches")
+                                    .font(.custom("HelveticaNeue-Light", size: 18))
+                                    .foregroundColor(subtextColor)
+                                    .padding(.top, 30)
+                                Text(searchText.isEmpty ?
+                                     "Begin Your Collection" :
+                                        "Refine Your Search")
+                                    .font(.custom("HelveticaNeue-Light", size: 14))
+                                    .foregroundColor(subtextColor.opacity(0.7))
+                            }
+                        } else {
+                            ScrollView {
+                                LazyVStack(spacing: 15) {
+                                    ForEach(filteredCocktails) { savedCocktail in
+                                        FavoriteCardView(savedCocktail: savedCocktail)
+                                    }
+                                }
+                                .padding(.horizontal)
                             }
                         }
-                        .padding(.horizontal)
                     }
+                }
+            } else {
+                // New unauthenticated view content
+                ZStack {
+                    backgroundColor.ignoresSafeArea()
+                    
+                    VStack(spacing: 20) {
+                        Spacer()
+                        
+                        Text("Cocktail Collection")
+                            .font(.custom("HelveticaNeue-Thin", size: 38))
+                            .tracking(3)
+                            .textCase(.uppercase)
+                            .foregroundColor(textColor)
+                        
+                        Text("Sign in to view and manage your saved cocktails")
+                            .font(.custom("HelveticaNeue-Light", size: 16))
+                            .foregroundColor(subtextColor)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                        
+                        SignInWithAppleButton(
+                            .signIn,
+                            onRequest: { request in
+                                authManager.handleSignInWithApple()
+                            },
+                            onCompletion: { _ in }
+                        )
+                        .frame(height: 44)
+                        .padding(.horizontal, 40)
+                        
+                        Button("Cancel") {
+                            dismiss()
+                        }
+                        .foregroundColor(subtextColor)
+                        .padding(.top)
+                        
+                        Spacer()
+                    }
+                    .padding()
                 }
             }
         }
         .navigationBarHidden(true)
         .onAppear {
-            firebaseManager.startListeningForChanges()
+            if authManager.authState == .authenticated {
+                firebaseManager.startListeningForChanges()
+            }
         }
     }
 }
